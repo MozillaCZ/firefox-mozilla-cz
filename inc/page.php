@@ -3,11 +3,6 @@ class Page
 {
 	private $webUrl = 'http://firefox.mozilla.cz/';
 	private $webName = 'Přejděte na Firefox';
-	private $redirects = array(
-		'/media/' => 'https://www.mozilla.org/cs/firefox/desktop/',
-		'/jak-prejit/' => 'https://support.mozilla.org/cs/kb/Import%20z%C3%A1lo%C5%BEek%20a%20dal%C5%A1%C3%ADch%20dat%20z%20jin%C3%BDch%20prohl%C3%AD%C5%BEe%C4%8D%C5%AF',
-		'/stahnout/' => 'http://www.mozilla.cz/stahnout/firefox/',
-	);
 
 	private $title = 'Mozilla Firefox';
 	private $description;
@@ -19,16 +14,6 @@ class Page
 	{
 		error_reporting(E_ALL);
 		$this->incPath = dirname(__FILE__);
-	}
-
-	public function redirect() {
-		$requestUrl = filter_input(INPUT_SERVER, 'REQUEST_URI');
-		if(isset($this->redirects[$requestUrl])) {
-			header('HTTP/1.1 301 Moved Permanently');
-			header(sprintf('Location: %s', $this->redirects[$requestUrl]));
-			header('Connection: close');
-			exit;
-		}
 	}
 
 	public function setTitle($title, $prepend = true) {
@@ -94,4 +79,3 @@ class Page
 }
 
 $page = new Page();
-$page->redirect();
