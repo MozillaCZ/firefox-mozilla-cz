@@ -1,30 +1,26 @@
 <?php
-	$badUrl = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-	$redirectUrl = '';
-	
-	if (strpos($_SERVER['REQUEST_URI'], "/otazky/klavesove-zkratky") === 0) {
-		$redirectUrl = "http://support.mozilla.com/cs/kb/Kl%C3%A1vesov%C3%A9+zkratky";
-	}	
-	if (strpos($_SERVER['REQUEST_URI'], "/otazky/ovladani-mysi") === 0) {
-		$redirectUrl = "http://support.mozilla.com/cs/kb/Ovl%C3%A1d%C3%A1n%C3%AD+Firefoxu+my%C5%A1%C3%AD";
-	}
-	if (strpos($_SERVER['REQUEST_URI'], "/otazky/rozdily-terminologie") === 0) {
-		$redirectUrl = "http://support.mozilla.com/cs/kb/Pro%20u%C5%BEivatele%20Internet%20Exploreru#Rozd_ly_v_terminologii";
-	}
-	if (strpos($_SERVER['REQUEST_URI'], "/proc-prejit") === 0) {
-		$redirectUrl = "http://www.mozilla.org/cs/firefox/features/";
-	}
-	if (strpos($_SERVER['REQUEST_URI'], "/propagace") === 0) {
-		$redirectUrl = "https://affiliates.mozilla.org/cs/";
-	}
-	if (strpos($_SERVER['REQUEST_URI'], "/proc-prejit/co-msie-neumi-a-firefox-ano") === 0) {
-		$redirectUrl = "http://www.mozilla.org/cs/firefox/features/";
-	}
+	$redirects = array(
+		'/jak-prejit' => 'https://support.mozilla.org/cs/kb/Import%20z%C3%A1lo%C5%BEek%20a%20dal%C5%A1%C3%ADch%20dat%20z%20jin%C3%BDch%20prohl%C3%AD%C5%BEe%C4%8D%C5%AF',
+		'/media' => 'https://www.mozilla.org/cs/firefox/desktop/',
+		'/otazky/klavesove-zkratky' => 'https://support.mozilla.org/cs/kb/Kl%C3%A1vesov%C3%A9%20zkratky',
+		'/otazky/ovladani-mysi' => 'https://support.mozilla.org/cs/kb/Ovl%C3%A1d%C3%A1n%C3%AD%20Firefoxu%20my%C5%A1%C3%AD',
+		'/otazky/rozdily-terminologie' => 'https://support.mozilla.org/cs/kb/Pro%20u%C5%BEivatele%20Internet%20Exploreru#w_rozdagly-v-terminologii',
+		'/proc-prejit' => 'https://www.mozilla.org/cs/firefox/desktop/',
+		'/proc-prejit/co-msie-neumi-a-firefox-ano' => 'https://www.mozilla.org/cs/firefox/desktop/',
+		'/propagace' => 'https://affiliates.mozilla.org/',
+		'/stahnout/tapety' => 'https://addons.mozilla.org/cs/firefox/themes/',
+		'/stahnout' => 'http://www.mozilla.cz/stahnout/firefox/',
+	);
 
-	if ($redirectUrl != '') {
-		header("HTTP/1.1 301 Moved Permanently");
-		header("Location: " . $redirectUrl);
-		header("Connection: close");
+	$requestUri = filter_input(INPUT_SERVER, 'REQUEST_URI');
+	$requestUri = str_replace('index.php', '', $requestUri);
+	if($requestUri !== '/') {
+		$requestUri = rtrim($requestUri, '/');
+	}
+	if(isset($redirects[$requestUri])) {
+		header('HTTP/1.1 301 Moved Permanently');
+		header(sprintf('Location: %s', $redirects[$requestUri]));
+		header('Connection: close');
 		exit;
 	}
 
