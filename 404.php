@@ -8,6 +8,7 @@
 		'/proc-prejit' => 'https://www.mozilla.org/cs/firefox/desktop/',
 		'/proc-prejit/co-msie-neumi-a-firefox-ano' => 'https://www.mozilla.org/cs/firefox/desktop/',
 		'/propagace' => 'https://affiliates.mozilla.org/',
+		'/stahnout/tapety' => 'https://addons.mozilla.org/cs/firefox/themes/',
 		'/stahnout' => 'http://www.mozilla.cz/stahnout/firefox/',
 	);
 
