@@ -60,6 +60,7 @@ class Download
 		$json_array = json_decode($json, true);
 		$this->data['verzia'] = $json_array[$this->products[$this->product]['key']];
 		$this->data['download_win'] = sprintf($this->products[$this->product]['download_url'], $this->data['verzia'], 'win');
+		$this->data['download_win64'] = sprintf($this->products[$this->product]['download_url'], $this->data['verzia'], 'win64');
 		$this->data['download_lin'] = sprintf($this->products[$this->product]['download_url'], $this->data['verzia'], 'linux');
 		$this->data['download_mac'] = sprintf($this->products[$this->product]['download_url'], $this->data['verzia'], 'osx');
 		$this->data['changelog'] = sprintf($this->products[$this->product]['changelog_url'], $this->data['verzia']);
@@ -80,6 +81,10 @@ class Download
 			return $this->platform = "mac";
 		}
 
+		if(stristr($uaString, "Win64") || stristr($uaString, "WoW64")) {
+			return $this->platform = "win64";
+		}
+
 		return $this->platform = "win";
 	}
 
@@ -91,6 +96,9 @@ class Download
 
 			case 'mac':
 				return 'Mac OS';
+
+			case 'win64':
+			    return 'Windows (64-bit)';
 
 			default:
 				return 'Windows';
