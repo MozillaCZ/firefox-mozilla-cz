@@ -2,6 +2,7 @@
 	$redirects = array(
 		'/jak-prejit' => 'https://support.mozilla.org/cs/kb/Import%20z%C3%A1lo%C5%BEek%20a%20dal%C5%A1%C3%ADch%20dat%20z%20jin%C3%BDch%20prohl%C3%AD%C5%BEe%C4%8D%C5%AF',
 		'/media' => 'https://www.mozilla.org/cs/firefox/desktop/',
+		'/otazky' => 'https://support.mozilla.org/cs/products/firefox',
 		'/otazky/klavesove-zkratky' => 'https://support.mozilla.org/cs/kb/Kl%C3%A1vesov%C3%A9%20zkratky',
 		'/otazky/ovladani-mysi' => 'https://support.mozilla.org/cs/kb/Ovl%C3%A1d%C3%A1n%C3%AD%20Firefoxu%20my%C5%A1%C3%AD',
 		'/otazky/rozdily-terminologie' => 'https://support.mozilla.org/cs/kb/Pro%20u%C5%BEivatele%20Internet%20Exploreru#w_rozdagly-v-terminologii',
