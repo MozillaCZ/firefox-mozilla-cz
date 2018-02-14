@@ -37,6 +37,6 @@
 #    RewriteRule zkusenosti/?$ https://www.mozilla.org/cs/firefox/desktop/ [L,R=301]
 #    RewriteRule zkusenosti/(.*)$ https://www.mozilla.org/cs/firefox/desktop/ [L,R=301]
 
-    RewriteRule ^(.*)$ http://www.firefox.cz/ [L,R=301]
+    RewriteRule ^(.*)$ https://www.firefox.cz/ [L,R=301]
 </IfModule>
 
